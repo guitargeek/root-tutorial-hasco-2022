@@ -56,11 +56,10 @@ Create a notebook that follows these steps:
 - Create a Gaussian function for fitting, with the right range and parameter starting values
 - Use [TH1::Fit()](https://root.cern/doc/master/classTH1.html#a7e7d34c91d5ebab4fc9bba3ca47dabdd) to fit the Gaussian to the histogram with the following options:
     - Likelihood fit
-    - Compute errors using MINOS
     - Save and return the fit result as a [TFitResult](https://root.cern.ch/doc/master/classTFitResult.html)
 - Get and print the following information from the fit result
     - Post-fit parameter values
-    - Asymmetric MINOS errors
+    - Parameter uncertainties
     - Parameter correlation matrix
     - It is also helpful to look at the documentation of the [FitResult](https://root.cern.ch/doc/master/classROOT_1_1Fit_1_1FitResult.html) base class of the TFitResult to figure out how to do this
 
@@ -71,8 +70,8 @@ Create a notebook that follows these steps:
 - Fit the following function to the histogram:
   ```python
   expo = ROOT.TF1("expo", "[A] * exp(-([B] + x))")
-  f.SetParameter(0, 1) // set initial parameters
-  f.SetParameter(1, 1)
+  expo.SetParameter(0, 1) # set initial parameters
+  expo.SetParameter(1, 1)
   ```
 - Do a chi-square fit of this function to the histogram
 - Inspect the fit result just like in the previous exercise
@@ -117,3 +116,6 @@ That's already great to be able to achieve such results with a few lines of code
 1. The **fit function**. Is the peak really just a Gaussian? What are the underlying physics processes? Maybe thinking about this could help to find a better fittng function
 2. The **object selection**. Many of the selected electrons are not actually from the Z boson: they are "fake" electrons in the detector from background noise, resulting in the exponential background in the mass spectrum. Can you improve the electron selection in the analysis to suppress this background?
 3. The **event selection** (*warning, very difficult!*).  In the initial analysis, selected only events with exactly two reconstructed electrons. However, there are many good events that you lose like that, as you can also have true Z boson events with more reconstructed electrons (mostly fake electrons)! Can you improve the event selection to recover such cases?
+4. The **fit diagnostics**. Can you add a bottom panel to the plot that shows the difference between the fit model and data in each bin, divided by the statistical uncertainty of the data?
+
+For this last exercise, there is not solution available, as this is a more difficult bonus exercise.
