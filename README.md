@@ -95,6 +95,9 @@ Please try to implement the following steps to **analyze the invariant mass** sp
 Can you model the peak accurately to **identify the mass of the Z boson**?
 
 **Hint:**
+* The [tutorials](https://root.cern.ch/doc/master/group__tutorial__dataframe.html) are an excellent reference to see RDataFrame examples
+* To see the full list of RDataFrame commands, take a look at the [documentation](https://root.cern.ch/doc/master/classROOT_1_1RDataFrame.html)
+* This (Higgs Boson Analysis)[http://opendata.cern.ch/record/12360) is a nice example of a CMS Open Data analysis with RDataFrame that your can get inspired by
 * You can also use wildcards to open the ROOT files for both runs in one go:
   ```python
   df = ROOT.RDataFrame("Events", "~/CMS_Open_Data/*_DoubleElectron.root")
